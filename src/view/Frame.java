@@ -1,6 +1,7 @@
 package view;
 
 import java.awt.BorderLayout;
+import controller.TimeChecker;
 import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.GridLayout;
@@ -13,12 +14,12 @@ import javax.swing.*;
 
 import model.Parser;
 
+
 public class Frame extends JFrame
 {
   Frame frame;
   Panel p = new Panel();
   Object[][] newData, oldData;
-  
   public Frame(){
     setVisible(true);
     setSize(new Dimension(100,100));

@@ -2,19 +2,22 @@ package view;
 import java.awt.GridLayout;
 
 import javax.swing.JPanel;
-
 import javax.swing.JTabbedPane;
 
-public class Panel extends JPanel implements Runnable {
+import controller.*;
+
+public class Panel extends JPanel {
     /* JPanel containing the JTabbedPane stuff */
     JTabbedPane jtp = new JTabbedPane();
+    TimeChecker tc = new TimeChecker();
     public Panel(){
       super(new GridLayout(1,0));
       Table t = new Table("Haymarket");
       jtp.add(t);
       jtp.setTitleAt(0, "Haymarket");
       add(jtp);
-      run();
+      tc.setDaemon(true);
+      tc.start();
        }
  
     public void addTrain(String d, String c, String dep, String a)
@@ -52,10 +55,5 @@ public class Panel extends JPanel implements Runnable {
       t.removeTrain();
     }
 
-    @Override
-    public void run()
-    {
-      System.out.println("hi");
-      
-    }
+    
 }
