@@ -72,13 +72,19 @@ public class Table extends JPanel
   {
     /* Adds a train to the end of the currently selected station */
     Object[][] oldData = model.getData();
+    Object[][] newData = new Object[1][5];
    // Object[][] newdata = {{station,d,c,dep,a}};
-    Object[][] newData = new Object[oldData.length+1][];
-    
-    for(int x=0;x<oldData.length;x++){
+    if(oldData!=null){
+    newData = new Object[oldData.length+1][];
+    }
+    int h = 0;
+    if(oldData !=null){
+    h = oldData.length;
+    }
+    for(int x=0;x<h;x++){
       newData[x] = oldData[x];
     }
-    newData[oldData.length] = new Object[]{station,d,c,dep,a};
+    newData[h] = new Object[]{station,d,c,dep,a};
     
     model.setData(newData);
     

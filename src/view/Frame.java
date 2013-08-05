@@ -23,7 +23,7 @@ public class Frame extends JFrame
     setSize(new Dimension(100,100));
     setPreferredSize(new Dimension(550,250));
     setMaximumSize(new Dimension(100,100));
-    setMinimumSize(new Dimension(100,100));
+    setMinimumSize(new Dimension(550,250));
     createJMenuBar();
     //p.setOpaque(true);
     add(p);
@@ -96,29 +96,15 @@ public class Frame extends JFrame
     JMenuItem removeTrain = new JMenuItem("Remove Train");
     removeTrain.addActionListener(new ActionListener(){
       public void actionPerformed(ActionEvent e){
-        p.removeTrain();
+        JOptionPane.showMessageDialog(frame, "Sorry, not done yet");
+        //p.removeTrain();
       }
     });
     JMenuItem removeStation = new JMenuItem("Remove Station");
     removeStation.addActionListener(new ActionListener(){
       public void actionPerformed(ActionEvent e){
-        JTextField xField = new JTextField(5);
-        JTextField yField = new JTextField(5);
-
-        JPanel myPanel = new JPanel();
-        myPanel.add(new JLabel("x:"));
-        myPanel.add(xField);
-        myPanel.add(Box.createHorizontalStrut(15)); // a spacer
-        myPanel.add(new JLabel("y:"));
-        myPanel.add(yField);
-
-        int result = JOptionPane.showConfirmDialog(null, myPanel, 
-                 "Please Enter X and Y Values", JOptionPane.OK_CANCEL_OPTION);
-        if (result == JOptionPane.OK_OPTION) {
-           System.out.println("x value: " + xField.getText());
-           System.out.println("y value: " + yField.getText());
+        p.removeStation();
         }
-      }
     });
     editMenu.add(addTrain);
     editMenu.add(addStation);
