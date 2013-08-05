@@ -55,7 +55,7 @@ public class Parser
           for(int j=0;j<nl2.getLength();j++){
             Element e2 = (Element)nl2.item(j);
             getTrain(e2);
-            System.out.println(d+c+dt+a);
+           
             t.addTrain(d,c,dt,a);
           }
         }

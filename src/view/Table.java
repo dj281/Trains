@@ -2,6 +2,7 @@ package view;
 
 import java.awt.BorderLayout;
 import java.awt.Dimension;
+import java.awt.Rectangle;
 
 import javax.swing.JLabel;
 import javax.swing.JPanel;
@@ -33,6 +34,7 @@ public class Table extends JPanel
     this.station = station;
   }
   public Table(String s){
+    
     station = s;
     model = new TrainTableModel(s);
     sorter = new TableRowSorter<TrainTableModel>(model);
@@ -64,6 +66,7 @@ public class Table extends JPanel
         
         form.add(filterText, BorderLayout.SOUTH);
         add(form,BorderLayout.SOUTH);
+       
   }
   private void newFilter() {
         RowFilter<TrainTableModel, Object> rf = null;

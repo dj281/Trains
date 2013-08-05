@@ -4,6 +4,7 @@ import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.GridLayout;
+import java.awt.Rectangle;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.io.File;
@@ -28,6 +29,8 @@ public class Frame extends JFrame
     //p.setOpaque(true);
     add(p);
     setContentPane(p);
+    Rectangle r = this.getBounds();
+    p.setSize(r.width,r.height);
     pack();
     this.frame=this;
   }

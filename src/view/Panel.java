@@ -1,50 +1,20 @@
 package view;
-
-import java.awt.BorderLayout;
-
-import org.w3c.dom.Document;
-import org.w3c.dom.Element;
-import org.w3c.dom.NodeList;
-import org.xml.sax.SAXException;
-
-import java.awt.Dimension;
 import java.awt.GridLayout;
-import java.io.File;
-import java.io.IOException;
 
-import javax.swing.BoxLayout;
-import javax.swing.JLabel;
 import javax.swing.JPanel;
-import javax.swing.JScrollPane;
+
 import javax.swing.JTabbedPane;
-import javax.swing.JTable;
-import javax.swing.JTextField;
-import javax.swing.ListSelectionModel;
-import javax.swing.RowFilter;
-import javax.swing.SpringLayout;
-import javax.swing.SwingConstants;
-import javax.swing.event.DocumentEvent;
-import javax.swing.event.DocumentListener;
-import javax.swing.event.ListSelectionEvent;
-import javax.swing.event.ListSelectionListener;
-import javax.swing.table.TableRowSorter;
-import javax.xml.parsers.DocumentBuilder;
-import javax.xml.parsers.DocumentBuilderFactory;
-import javax.xml.parsers.ParserConfigurationException;
 
-import model.TrainTableModel;
-
-
-public class Panel extends JPanel {
+public class Panel extends JPanel implements Runnable {
     /* JPanel containing the JTabbedPane stuff */
     JTabbedPane jtp = new JTabbedPane();
-    private Document doc;
     public Panel(){
       super(new GridLayout(1,0));
       Table t = new Table("Haymarket");
       jtp.add(t);
       jtp.setTitleAt(0, "Haymarket");
       add(jtp);
+      run();
        }
  
     public void addTrain(String d, String c, String dep, String a)
@@ -80,5 +50,12 @@ public class Panel extends JPanel {
       /* WIP: Removes a train */
       Table t = (Table) jtp.getComponentAt(jtp.getSelectedIndex());
       t.removeTrain();
+    }
+
+    @Override
+    public void run()
+    {
+      System.out.println("hi");
+      
     }
 }
