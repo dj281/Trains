@@ -59,6 +59,10 @@ public class Panel extends JPanel {
       jtp.setTitleAt(jtp.getTabCount()-1, s);
       jtp.setSelectedIndex(jtp.getTabCount()-1);
     }
+    public void addStation(Table t){
+      jtp.add(t);
+      jtp.setTitleAt(jtp.getTabCount()-1,t.getStation());
+    }
     
     public void removeAllStations(){
       jtp.removeAll();

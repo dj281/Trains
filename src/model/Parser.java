@@ -23,7 +23,11 @@ public class Parser
     parseDocument();
   }
   Document doc;
-  private ArrayList<String> stations = new ArrayList<String>();
+  private ArrayList<Table> stations = new ArrayList<Table>();
+  private String d;
+  private String c;
+  private String a;
+  private String dt;
   public void parseXmlFile(File file){
     DocumentBuilderFactory dbf = DocumentBuilderFactory.newInstance();
     try{
@@ -45,17 +49,35 @@ public class Parser
         for(int i=0;i<nl.getLength();i++){
         Element e1 = (Element)nl.item(i);
         Table t = getStation(e1);
+        stations.add(t);
+        NodeList nl2 = e1.getElementsByTagName("Train");
+        if(nl2 != null && nl2.getLength()>0){
+          for(int j=0;j<nl2.getLength();j++){
+            Element e2 = (Element)nl2.item(j);
+            getTrain(e2);
+            System.out.println(d+c+dt+a);
+            t.addTrain(d,c,dt,a);
+          }
+        }
+        
+        
         }
       }
     }
 
   public Table getStation(Element staEl){
     String name = getTextValue(staEl,"Name");
-    stations.add(name);
+    
     Table t = new Table(name);
     return t;
   }
-  public ArrayList<String> getListOfStations(){
+  public void getTrain(Element traEl){
+    d = getTextValue(traEl,"Destination");
+    c = getTextValue(traEl,"Calling");
+    dt = getTextValue(traEl,"DestTime");
+    a = getTextValue(traEl,"ArrTime");
+    }
+  public ArrayList<Table> getListOfStations(){
     return stations;
   }
   private String getTextValue(Element ele, String tagName){
